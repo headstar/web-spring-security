@@ -1,0 +1,3 @@
+apply plugin: 'scala'
+
+project.ext.gatlingVersion = '2.0.0-RC5'

@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE")
+    }
+}
+
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-security"
+
+    runtime "ch.qos.logback:logback-classic:1.1.2"
+}
+
+idea.project {
+    languageLevel = 1.7
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
+

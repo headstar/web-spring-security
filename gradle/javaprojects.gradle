@@ -1,0 +1,8 @@
+apply plugin: 'java'
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+project.ext.logbackClassicVersion = '1.0.13'
+
+
+
