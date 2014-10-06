@@ -47,10 +47,9 @@ public class Application extends WebMvcConfigurerAdapter {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .authenticationProvider(new CustomIPAddressAuthenticationProvider())
                     .authorizeRequests()
                     .anyRequest()
-                    .hasRole("USER")
+                    .access("hasRole('ROLE_" + "USER" + "') or hasIpAddress('192.168.25.238/32')")
                     .and()
                     .httpBasic();
         }
