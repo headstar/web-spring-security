@@ -49,7 +49,7 @@ public class Application extends WebMvcConfigurerAdapter {
             http
                     .authorizeRequests()
                     .anyRequest()
-                    .access("hasRole('ROLE_" + "USER" + "') or hasIpAddress('192.168.25.238/32')")
+                    .access("hasAuthority('" + "USER" + "')" + " or hasIpAddress('192.168.25.238/32')")
                     .and()
                     .httpBasic();
         }
