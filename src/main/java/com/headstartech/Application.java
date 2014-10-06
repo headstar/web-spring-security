@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,10 @@ public class Application extends WebMvcConfigurerAdapter {
         return String.valueOf(counter.incrementAndGet());
     }
 
+    @RequestMapping("/open")
+    public String open() {
+        return String.valueOf(counter.incrementAndGet());
+    }
 
     public static void main(String[] args) throws Exception {
         new SpringApplicationBuilder(Application.class).run(args);
@@ -43,6 +48,11 @@ public class Application extends WebMvcConfigurerAdapter {
 
         @Autowired
         private SecurityProperties security;
+
+        @Override
+        public void configure(WebSecurity web) throws Exception {
+            web.ignoring().antMatchers("/open");
+        }
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
